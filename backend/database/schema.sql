@@ -1,0 +1,27 @@
+/* Criação da tabela com UNIQUE (evita duplicadas) em "numero_chamado"*/
+CREATE TABLE IF NOT EXISTS chamados (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  fantasia TEXT,
+  data_criacao_mes TEXT,
+  numero_chamado TEXT UNIQUE,
+  data_criacao TEXT,
+  data_finalizacao TEXT,
+  assunto TEXT,
+  status TEXT,
+  categoria_subcategoria TEXT,
+  tipo TEXT,
+  causa TEXT,
+  grupo TEXT,
+  operador TEXT,
+  horas_tarifadas TEXT,
+  solicitante TEXT,
+  departamento TEXT,
+  fcr TEXT,
+  prioridade TEXT,
+  pesquisa_respondida TEXT,
+  hora_criacao TEXT,
+  descricao TEXT,
+  tempo_ate_atendimento TEXT,
+  descricao_ultima_acao TEXT,
+  solucao TEXT
+);
