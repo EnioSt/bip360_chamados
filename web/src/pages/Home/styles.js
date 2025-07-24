@@ -14,11 +14,17 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  background-color: black;
+  background-color: #121316;
   padding: 40px;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.85);
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
 `;
 
 export const Title = styled.h1`

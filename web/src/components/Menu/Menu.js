@@ -11,11 +11,23 @@ export const Container = styled.header`
   @media (max-width: 600px) {
     flex-direction: column;
     gap: 12px;
+    align-items: center;
   }
 `;
 
 export const Logo = styled.img`
   height: 40px;
+`;
+
+export const ContainerNav = styled.div`
+  display: flex;
+  gap: 10px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
 `;
 
 export const Nav = styled.a`

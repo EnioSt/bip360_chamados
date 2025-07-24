@@ -42,11 +42,11 @@ router.get("/search", (req, res) => {
     params.push(status);
   }
   if (operador) {
-    query += " AND LOWER(operador) LIKE ? LIMIT 10";
+    query += " AND LOWER(operador) LIKE ?";
     params.push(`%${operador.toLowerCase()}%`);
   }
   if (solicitante) {
-    query += " AND LOWER(operador) LIKE ?";
+    query += " AND LOWER(solicitante) LIKE ?";
     params.push(`%${solicitante.toLowerCase()}%`);
   }
   if (data_inicio && data_fim) {

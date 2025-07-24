@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   width: 100%;
-  min-height: calc(100vh - 122px);
+  min-height: calc(100vh - 130px);
   display: flex;
   justify-content: center;
   padding: 40px 0;
@@ -45,6 +45,13 @@ export const CardSection = styled.div`
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   max-height: 600px;
   overflow-y: auto;
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(380px, 1fr)
+  ); /* ✅ mais espaço por card */
+  gap: 24px;
 
   &::-webkit-scrollbar {
     width: 8px;

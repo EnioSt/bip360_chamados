@@ -5,8 +5,12 @@ export const CardWrapper = styled.div`
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 24px;
-  margin-bottom: 20px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px; /* ✅ aumentamos de 300px para 400px */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   h2 {
     font-size: 1.2rem;
@@ -24,9 +28,12 @@ export const CardWrapper = styled.div`
     margin: 8px 0;
     color: #333;
     font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   button {
-    margin-top: 12px;
+    margin-top: auto;
   }
 `;

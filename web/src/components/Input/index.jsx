@@ -1,11 +1,17 @@
-import React, { Children } from "react";
+import React from "react";
 import styled from "styled-components";
 
-const Input = ({ children, htmlFor }) => {
+const Input = ({ children, htmlFor, type, value, onChange }) => {
   return (
     <StyledWrapper>
       <div className="inputGroup">
-        <input type="text" required autoComplete="off" />
+        <input
+          required
+          autoComplete="off"
+          type={type}
+          value={value}
+          onChange={onChange}
+        />
         <label htmlFor={htmlFor}>{children}</label>
       </div>
     </StyledWrapper>
@@ -19,7 +25,6 @@ const StyledWrapper = styled.div`
     max-width: 190px;
     position: relative;
   }
-
   .inputGroup input {
     font-size: 100%;
     padding: 0.8em;
@@ -29,7 +34,6 @@ const StyledWrapper = styled.div`
     border-radius: 20px;
     width: 100%;
   }
-
   .inputGroup label {
     font-size: 100%;
     position: absolute;
@@ -38,9 +42,8 @@ const StyledWrapper = styled.div`
     margin-left: 0.5em;
     pointer-events: none;
     transition: all 0.3s ease;
-    color: rgb(100, 100, 100);
+    color: #003366;
   }
-
   .inputGroup :is(input:focus, input:valid) ~ label {
     transform: translateY(-50%) scale(0.9);
     margin: 0em;
@@ -48,10 +51,8 @@ const StyledWrapper = styled.div`
     padding: 0.4em;
     background-color: white;
   }
-
   .inputGroup :is(input:focus, input:valid) {
     border-color: #003366;
   }
 `;
-
 export default Input;
