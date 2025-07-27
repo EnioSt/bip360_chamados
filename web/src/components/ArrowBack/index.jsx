@@ -65,7 +65,7 @@ const StyledWrapper = styled.div`
     position: absolute;
     border-radius: 50%;
     inset: 7px;
-    border: 4px solid #599a53;
+    border: 4px solid #1073d6;
     transform: scale(1.3);
     transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
       transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);

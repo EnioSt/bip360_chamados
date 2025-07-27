@@ -9,7 +9,10 @@ const Card = ({
   numeroChamado,
   fantasia,
   solicitante,
+  dataInicio,
+  dataFim,
   resultados,
+  paginaAtual,
 }) => {
   const navigate = useNavigate();
   return (
@@ -36,8 +39,11 @@ const Card = ({
                 numeroChamado,
                 fantasia,
                 solicitante,
+                data_inicio: dataInicio,
+                data_fim: dataFim,
               },
               resultadosAtuais: resultados,
+              paginaAnterior: paginaAtual, // ✅ aqui!
             },
           })
         }

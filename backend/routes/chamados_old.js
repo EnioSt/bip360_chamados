@@ -4,48 +4,9 @@ import Database from "better-sqlite3";
 const router = express.Router();
 const db = new Database("database/chamados.db");
 
-// 🔍 Rota de autocomplete para campo fantasia
-router.get("/fantasias", (req, res) => {
-  const { query } = req.query;
-
-  try {
-    const stmt = db.prepare(`
-      SELECT DISTINCT fantasia 
-      FROM chamados_novo 
-      WHERE LOWER(fantasia) LIKE ? 
-      LIMIT 10
-    `);
-    const resultados = stmt.all(`%${query.toLowerCase()}%`);
-    const nomes = resultados.map((r) => r.fantasia);
-    res.json(nomes);
-  } catch (err) {
-    console.error("Erro ao buscar fantasias:", err);
-    res.status(500).json({ error: "Erro interno do servidor" });
-  }
-});
-
-// 🔍 Rota de autocomplete para campo solicitante
-router.get("/solicitantes", (req, res) => {
-  const { query } = req.query;
-
-  try {
-    const stmt = db.prepare(`
-      SELECT DISTINCT solicitante 
-      FROM chamados_novo 
-      WHERE LOWER(solicitante) LIKE ? 
-      LIMIT 10
-    `);
-    const resultados = stmt.all(`%${query.toLowerCase()}%`);
-    const nomes = resultados.map((r) => r.solicitante);
-    res.json(nomes);
-  } catch (err) {
-    console.error("Erro ao buscar solicitantes:", err);
-    res.status(500).json({ error: "Erro interno do servidor" });
-  }
-});
-
 // 🔍 Rota de busca com filtros flexíveis
 router.get("/search", (req, res) => {
+  //http://localhost:3000/chamados/search?fantasia=apte
   const {
     numero,
     fantasia,
@@ -55,6 +16,35 @@ router.get("/search", (req, res) => {
     data_inicio,
     data_fim,
   } = req.query;
+
+  const express = require("express");
+  const router = express.Router();
+  const db = require("./db"); // ou como você importa sua conexão
+
+  // router.get("/fantasias", async (req, res) => {
+  //   const { query } = req.query;
+  //   try {
+  //     const resultados = await db.query(
+  //       "SELECT DISTINCT fantasia FROM chamados WHERE fantasia ILIKE $1 LIMIT 10",
+  //       [`%${query}%`]
+  //     );
+  //     res.json(resultados.rows.map((r) => r.fantasia));
+  //   } catch (err) {
+  //     console.error("Erro ao buscar fantasias:", err);
+  //     res.status(500).json({ error: "Erro interno do servidor" });
+  //   }
+  // });
+
+  // module.exports = router;
+
+  // function normalizarData(data) {
+  //   if (!data || data.length !== 10 || !data.includes("-")) return data;
+  //   const [dia, mes, ano] = data.split("-");
+  //   return `${ano}-${mes}-${dia}`;
+  // }
+
+  // const dataInicioNormalizada = normalizarData(data_inicio);
+  // const dataFimNormalizada = normalizarData(data_fim);
 
   let query = "SELECT * FROM chamados_novo WHERE 1=1";
   const params = [];
@@ -79,30 +69,28 @@ router.get("/search", (req, res) => {
     query += " AND LOWER(solicitante) LIKE ?";
     params.push(`%${solicitante.toLowerCase()}%`);
   }
-
   if (data_inicio && data_fim) {
     query += `
-      AND substr(data_criacao, 7, 4) || '-' || substr(data_criacao, 4, 2) || '-' || substr(data_criacao, 1, 2)
-      BETWEEN ? AND ?
-    `;
+    AND substr(data_criacao, 7, 4) || '-' || substr(data_criacao, 4, 2) || '-' || substr(data_criacao, 1, 2)
+    BETWEEN ? AND ?
+  `;
     params.push(data_inicio, data_fim);
   } else if (data_inicio) {
     query += `
-      AND substr(data_criacao, 7, 4) || '-' || substr(data_criacao, 4, 2) || '-' || substr(data_criacao, 1, 2)
-      >= ?
-    `;
+    AND substr(data_criacao, 7, 4) || '-' || substr(data_criacao, 4, 2) || '-' || substr(data_criacao, 1, 2)
+    >= ?
+  `;
     params.push(data_inicio);
   } else if (data_fim) {
     query += `
-      AND substr(data_criacao, 7, 4) || '-' || substr(data_criacao, 4, 2) || '-' || substr(data_criacao, 1, 2)
-      <= ?
-    `;
+    AND substr(data_criacao, 7, 4) || '-' || substr(data_criacao, 4, 2) || '-' || substr(data_criacao, 1, 2)
+    <= ?
+  `;
     params.push(data_fim);
   }
 
   try {
     const resultados = db.prepare(query).all(...params);
-
     for (const chamado of resultados) {
       const interacoes = db
         .prepare(
@@ -115,11 +103,9 @@ router.get("/search", (req, res) => {
 
     res.json(resultados);
   } catch (err) {
-    res.status(500).json({
-      erro: "Erro ao executar busca",
-      detalhes: err.message,
-    });
+    res
+      .status(500)
+      .json({ erro: "Erro ao executar busca", detalhes: err.message });
   }
 });
-
 export default router;

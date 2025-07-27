@@ -20,6 +20,8 @@ export const Content = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto; /* permite crescimento em telas pequenas */
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -43,7 +45,7 @@ export const CardSection = styled.div`
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-  max-height: 600px;
+  max-height: 678px;
   overflow-y: auto;
 
   display: grid;
@@ -61,4 +63,24 @@ export const CardSection = styled.div`
     background-color: #ccc;
     border-radius: 4px;
   }
+`;
+
+export const SelectDiv = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const ButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 `;

@@ -8,6 +8,10 @@ export const Container = styled.header`
   padding: 16px 32px;
   flex-wrap: wrap;
 
+  h1 {
+    cursor: pointer;
+  }
+
   @media (max-width: 600px) {
     flex-direction: column;
     gap: 12px;
