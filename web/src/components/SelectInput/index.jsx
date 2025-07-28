@@ -3,12 +3,12 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
   width: 100%;
+  position: relative;
 `;
 
 const Label = styled.label`
-  margin-bottom: 8px;
+  margin: 8px 0;
   font-weight: 500;
   color: #003366;
 `;
@@ -16,12 +16,11 @@ const Label = styled.label`
 const Select = styled.select`
   padding: 13.6px;
   font-size: 1em;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 20px;
   background-color: #fff;
   color: #333;
   font-family: inherit;
-  appearance: none;
 
   &:focus {
     outline: none;

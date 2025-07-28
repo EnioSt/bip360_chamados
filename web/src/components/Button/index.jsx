@@ -27,6 +27,11 @@ const Button = ({ children, onClick }) => {
 };
 
 const StyledWrapper = styled.div`
+  button {
+    @media (max-width: 900px) {
+      width: 100%;
+    }
+  }
   .animated-button {
     position: relative;
     display: flex;
@@ -111,6 +116,10 @@ const StyledWrapper = styled.div`
     width: 220px;
     height: 220px;
     opacity: 1;
+  }
+
+  @media (max-width: 900px) {
+    width: 100%;
   }
 `;
 

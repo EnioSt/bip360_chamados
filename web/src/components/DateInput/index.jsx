@@ -20,10 +20,11 @@ const DateInput = ({ children, htmlFor, value, onChange }) => {
 };
 
 const StyledWrapper = styled.div`
+  width: 100%;
   .inputGroup {
     font-family: "Segoe UI", sans-serif;
-    margin: 1em 0;
-    width: 190px;
+    margin-bottom: 1em;
+    width: 100%;
     position: relative;
   }
 

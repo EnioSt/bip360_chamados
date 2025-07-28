@@ -37,6 +37,13 @@ export const FormSection = styled.div`
   padding: 32px;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const CardSection = styled.div`
@@ -70,9 +77,9 @@ export const SelectDiv = styled.div`
   width: 100%;
   gap: 2rem;
 
-  @media (max-width: 900px) {
+  @media (max-width: 740px) {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0;
     justify-content: center;
     align-items: center;
   }
