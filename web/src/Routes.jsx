@@ -12,8 +12,8 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/" element={<PaginaPadrao />}>
-          <Route path="chamados" element={<Chamados />} />
-          <Route path="chamados/:numero" element={<Detalhes />} />
+          <Route path="/chamados" element={<Chamados />} />
+          <Route path="/chamados/:numero" element={<Detalhes />} />
         </Route>
       </Routes>
     </>
