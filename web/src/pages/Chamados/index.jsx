@@ -6,6 +6,8 @@ import {
   CardSection,
   SelectDiv,
   ButtonDiv,
+  CardHeader,
+  Paginacao,
 } from "./chamados.js";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
@@ -212,17 +214,8 @@ const Chamados = () => {
             </form>
           </FormSection>
           <CardSection ref={cardsRef}>
-            <div
-              style={{
-                gridColumn: "1 / -1",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginBottom: "0.5em",
-                gap: "12px",
-              }}
-            >
-              <p style={{ margin: 0 }}>
+            <CardHeader>
+              <p>
                 {resultados.length === 0
                   ? "0 chamado encontrado"
                   : resultados.length === 1
@@ -230,40 +223,26 @@ const Chamados = () => {
                   : `${resultados.length} chamados encontrados`}
               </p>
 
-              <div style={{ display: "flex", gap: "12px" }}>
+              <div>
                 {(resultados.length > 0 || buscou) && (
                   <>
                     <button
                       onClick={alternarOrdem}
-                      style={{
-                        background: "transparent",
-                        border: "none",
-                        color: "#003366",
-                        fontSize: "1em",
-                        cursor: "pointer",
-                      }}
                       title="Inverter ordem dos chamados"
                     >
-                      🔃 Inverter ordem
+                      🔃 <span className="btn-text">Inverter ordem</span>
                     </button>
 
                     <button
                       onClick={limparFiltrosEChamados}
-                      style={{
-                        background: "transparent",
-                        border: "none",
-                        color: "#003366",
-                        fontSize: "1em",
-                        cursor: "pointer",
-                      }}
                       title="Limpar filtros e resultados"
                     >
-                      ❌ Limpar
+                      ❌ <span className="btn-text">Limpar</span>
                     </button>
                   </>
                 )}
               </div>
-            </div>
+            </CardHeader>
             {resultados.length > 0
               ? chamadosPaginados.map((chamado) => (
                   <Card
@@ -283,18 +262,7 @@ const Chamados = () => {
               : buscou &&
                 resultados.length === 0 && <p>Nenhum chamado encontrado.</p>}
             {resultados.length > chamadosPorPagina && (
-              <div
-                className="paginacao"
-                style={{
-                  gridColumn: "1 / -1",
-                  display: "flex",
-                  gap: "8px",
-                  flexWrap: "wrap",
-                  alignItems: "center",
-                  marginTop: "24px",
-                  justifyContent: "center",
-                }}
-              >
+              <Paginacao className="paginacao">
                 <button
                   onClick={() => {
                     setPaginaAtual(1);
@@ -364,7 +332,7 @@ const Chamados = () => {
                 >
                   ⏭ Última
                 </button>
-              </div>
+              </Paginacao>
             )}
           </CardSection>
         </Content>
