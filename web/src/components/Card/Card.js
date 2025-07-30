@@ -13,7 +13,8 @@ export const CardWrapper = styled.div`
   justify-content: space-between;
 
   @media (max-width: 500px) {
-    width: 80%;
+    width: 100%;
+    max-width: 100%;
   }
 
   h2 {

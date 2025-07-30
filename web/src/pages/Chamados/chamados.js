@@ -83,11 +83,15 @@ export const SelectDiv = styled.div`
   width: 100%;
   gap: 2rem;
 
-  @media (max-width: 740px) {
-    flex-direction: column;
-    gap: 0;
-    justify-content: center;
-    align-items: center;
+  @media (max-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-height: none;
+    overflow-y: visible;
+    padding: 12px;
+    box-sizing: border-box;
+    gap: 16px;
   }
 `;
 
@@ -144,10 +148,13 @@ export const CardHeader = styled.div`
   }
 
   @media (max-width: 600px) {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 8px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    grid-column: 1 / -1;
 
     p {
       font-size: 0.9em;
