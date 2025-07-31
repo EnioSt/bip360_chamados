@@ -7,14 +7,13 @@ export const CardWrapper = styled.div`
   padding: 24px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   width: 100%;
-  max-width: 400px; /* aumentamos de 300px para 400px */
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   @media (max-width: 500px) {
-    width: 100%;
-    max-width: 100%;
+    max-width: 90%;
   }
 
   h2 {

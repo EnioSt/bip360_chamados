@@ -49,7 +49,7 @@ export const FormSection = styled.div`
 export const CardSection = styled.div`
   flex: 2;
   background-color: white;
-  padding: 24px;
+  padding: 0 24px 24px 24px;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   max-height: 678px;
@@ -72,8 +72,11 @@ export const CardSection = styled.div`
   }
 
   @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    padding: 12px;
+    padding: 0 12px 12px 12px;
     box-sizing: border-box;
   }
 `;
@@ -148,6 +151,7 @@ export const CardHeader = styled.div`
     align-items: center;
     text-align: center;
     padding: 8px 0;
+    width: 100%;
 
     p {
       font-size: 0.9em;
